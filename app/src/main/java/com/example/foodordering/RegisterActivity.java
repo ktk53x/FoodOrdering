@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodordering.Models.Item;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,7 +20,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -67,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity
                     FirebaseUser user = auth.getCurrentUser();
                     String id = user.getUid();
                     HashMap<String, Object>map = new HashMap<>();
+                    ArrayList<UUID> list = new ArrayList<>();
                     map.put("name", names);
                     map.put("phone", numbers);
                     map.put("email",emails);
@@ -74,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity
                     map.put("cuisine", "");
                     map.put("rating", 0);
                     map.put("status", true);
+                    map.put("items",list);
                     assert id != null;
                     reference.child(id).updateChildren(map);
                     startActivity(new Intent(RegisterActivity.this, RestaurantsActivity.class));

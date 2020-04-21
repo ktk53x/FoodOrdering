@@ -11,4 +11,12 @@
     <string name="number">Number</string>
     <string name="name">Name</string>
     <string name="new_here_register_here">New here? Register Here</string>
+    <string name="see_menu" />
+    <string name="add_items">add items</string>
+    <string name="welcome_to_menu_settings">Welcome To Menu Settings</string>
+    <string name="add_item">add item</string>
+    <string name="description">descrition</string>
+    <string name="Category">Category</string>
+    <string name="price">price</string>
+    <string name="add">add</string>
 </resources>

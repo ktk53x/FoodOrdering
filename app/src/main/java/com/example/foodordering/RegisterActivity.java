@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity
                     startActivity(new Intent(RegisterActivity.this, RestaurantsActivity.class));
                 }
                 else
-                    Toast.makeText(RegisterActivity.this, "Could Create an Account", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Couldn't Create an Account", Toast.LENGTH_SHORT).show();
             }
         });
 

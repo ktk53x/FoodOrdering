@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FoodOrdering</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="welcome_to_restaurant_version">Welcome to Restaurant Version</string>
+    <string name="registration">Registration</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="already_registered_login_here">Already Registered? Login here</string>
+    <string name="number">Number</string>
+    <string name="name">Name</string>
 </resources>

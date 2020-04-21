@@ -11,10 +11,4 @@
     <string name="number">Number</string>
     <string name="name">Name</string>
     <string name="new_here_register_here">New here? Register Here</string>
-    <string name="edit_details">Edit Details</string>
-    <string name="cuisine">Cuisine</string>
-    <string name="menu_settings">menu settings</string>
-    <string name="status">Status</string>
-    <string name="logout">logout</string>
-    <string name="update">update</string>
 </resources>

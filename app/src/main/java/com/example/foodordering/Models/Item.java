@@ -11,6 +11,16 @@ public class Item {
     public Item() {
     }
 
+    public Item(String iID, String category, String description, String name, Boolean nonVeg, String photoUrl, Float price) {
+        this.iID = iID;
+        this.category = category;
+        this.description = description;
+        this.name = name;
+        this.nonVeg = nonVeg;
+        this.photoUrl = photoUrl;
+        this.price = price;
+    }
+
     public String getiID() {
         return iID;
     }

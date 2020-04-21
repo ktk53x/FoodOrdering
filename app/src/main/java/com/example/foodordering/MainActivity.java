@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             }
         });
+        
 
 //        Intent intent = new Intent(this, ItemsActivity.class);
 //        startActivity(intent);

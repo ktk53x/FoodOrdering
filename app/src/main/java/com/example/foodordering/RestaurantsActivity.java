@@ -35,6 +35,7 @@ public class RestaurantsActivity extends AppCompatActivity {
         restaurantRecyclerView = findViewById(R.id.recycler_view);
         restaurants = new ArrayList<>();
         restaurantAdapter = new RestaurantAdapter(restaurants);
+        Log.d("Present","Coming till here");
         restaurants.clear();
         db.
                 child("Restaurants").
@@ -48,8 +49,8 @@ public class RestaurantsActivity extends AppCompatActivity {
                             HashMap<String, Object> temp = (HashMap<String, Object>)postSnapshot.getValue();
                             Restaurant restaurant = new Restaurant();
                             restaurant.setName(temp.get("name").toString());
-                            restaurant.setCuisine(temp.get("cuisine").toString());
-                            restaurant.setRating(Integer.parseInt(temp.get("rating").toString()));
+                            restaurant.setEmail(temp.get("email").toString());
+                            restaurant.setPhone(Integer.parseInt(temp.get("phone").toString()));
                             restaurants.add(restaurant);
                         }
                         restaurantAdapter.notifyDataSetChanged();

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.foodordering.Models.Address;
 import com.example.foodordering.Models.Item;
@@ -16,15 +18,27 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference db = firebaseDatabase.getReference();
+//    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//    DatabaseReference db = firebaseDatabase.getReference();
+    private Button login, register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, ItemsActivity.class);
-        startActivity(intent);
+
+        login = findViewById(R.id.login);
+        register = findViewById(R.id.register);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            }
+        });
+
+//        Intent intent = new Intent(this, ItemsActivity.class);
+//        startActivity(intent);
 //        ArrayList<String> items = new ArrayList<>();
 //        items.add("7a289a2b-19cb-4912-9127-a82f09ebc666");
 //        items.add("a646f54e-dbfa-4aa9-af91-8044ea4a027e");

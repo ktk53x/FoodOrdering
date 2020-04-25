@@ -3,6 +3,7 @@ package com.example.foodordering;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,15 +18,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class AddMenuActivity extends AppCompatActivity {
     FirebaseAuth auth;
-    DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("RestaurantItems");
-    DatabaseReference rest = FirebaseDatabase.getInstance().getReference().child("Restaurants");
-
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Items");
+    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Restaurant");
+    DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("RestaurantItems");
     private EditText name, description, category, price;
     private Button add;
 
@@ -45,7 +47,7 @@ public class AddMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name_s, description_s, category_s,price_s;
-                final String id = reff.push().getKey();
+                final String id = reference.push().getKey();
                 name_s = name.getText().toString();
                 category_s = category.getText().toString();
                 description_s = description.getText().toString();
@@ -61,27 +63,25 @@ public class AddMenuActivity extends AppCompatActivity {
                 map.put("nonVeg", false);
                 map.put("photoUrl", "");
 
-                assert id != null;
-                reff.child(id).updateChildren(map);
-
-                FirebaseUser user = auth.getCurrentUser();
-                String rid = user.getUid();
-                rest = rest.child(rid);
-
-                rest.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        HashMap<String, Object> temp = (HashMap<String, Object>)dataSnapshot.getValue();
-                        ArrayList<UUID> list = (ArrayList<UUID>) temp.get("items");
-                        list.add(UUID.fromString(id));
-                        rest.child("items").setValue(list);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+//                FirebaseUser user = auth.getCurrentUser();
+//                assert user != null;
+//                final String rid = user.getUid();
+//                reference1.child(rid).addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        HashMap<String, Object> hashMap = (HashMap<String, Object>) dataSnapshot.getValue();
+//                        int item_count = (int) hashMap.get("item_count");
+//                        reference1.child(rid).child("item_count").setValue(item_count+1);
+//                        reference2.child(rid).child(Integer.toString(item_count)).setValue(id);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+                reference.child(id).updateChildren(map);
+                startActivity(new Intent(AddMenuActivity.this,SetMenuActivity.class));
 
             }
         });
